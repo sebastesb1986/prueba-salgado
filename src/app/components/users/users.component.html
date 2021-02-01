@@ -1,0 +1,155 @@
+<div class="container">
+    <div class="row">
+        <button class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal">Crear Usuario</button>
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of users">
+                    <th scope="row">{{item.perfil.name}} {{item.perfil.lastname}}</th>
+                    <td>{{item.perfil.address}}</td>
+                    <td>{{item.perfil.phone}}</td>
+                    <!-- <td>{{item.email}}</td> -->
+                    <td>
+                      <a href="" (click)="editUser(item)" data-bs-toggle="modal" data-bs-target="#editarModal">Editar</a><br>
+                      <a href="" (click)="deleteUser(item.id)">Eliminar</a>
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Crear usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+              <div class="row">
+                <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre Completo</label>
+                    <input type="text" class="form-control" name="name" [(ngModel)]="name">
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="apellido" class="form-label">Apellidos</label>
+                    <input type="text" class="form-control"  name="lastname" [(ngModel)]="lastname">
+                </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="mb-3">
+                      <label for="username" class="form-label">Nombre de usuario</label>
+                      <input type="text" class="form-control" name="username" [(ngModel)]="username">
+                  </div>
+                </div>
+            </div>
+              <div class="row">
+                  <div class="col-md-12">
+                    <div class="mb-3">
+                        <label for="correo" class="form-label">Correo</label>
+                        <input type="email" class="form-control" name="email" [(ngModel)]="email">
+                    </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="celular" class="form-label">Celular</label>
+                        <input type="text" class="form-control" name="phone" [(ngModel)]="phone">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="direccion" class="form-label">Direccion</label>
+                        <input type="text" class="form-control" name="address" [(ngModel)]="address">
+                    </div>
+                  </div>
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+          <button type="button" class="btn btn-primary" (click)="saveUser()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- EDITAR -->
+<div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModal">Editar usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+              <div class="row">
+                <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre Completo</label>
+                    <input type="text" class="form-control" name="name"  [(ngModel)]="name">
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="apellido" class="form-label">Apellidos</label>
+                    <input type="text" class="form-control" name="lastname"  [(ngModel)]="lastname">
+                </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="mb-3">
+                      <label for="username" class="form-label">Nombre de usuario</label>
+                      <input type="text" class="form-control" name="username" [(ngModel)]="username">
+                  </div>
+                </div>
+            </div>
+              <div class="row">
+                  <div class="col-md-12">
+                    <div class="mb-3">
+                        <label for="correo" class="form-label">Correo</label>
+                        <input type="email" class="form-control" name="email" [(ngModel)]="email">
+                    </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="celular" class="form-label">Celular</label>
+                        <input type="text" class="form-control" name="phone" [(ngModel)]="phone">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="direccion" class="form-label">Direccion</label>
+                        <input type="text" class="form-control" name="address" [(ngModel)]="address">
+                    </div>
+                  </div>
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+          <button type="button" class="btn btn-primary" (click)="updateUser()">Actualizar</button>
+        </div>
+      </div>
+    </div>
+</div>
